@@ -7,7 +7,7 @@ This document serves as the master blueprint for building a web-based, live-devi
 ## 1. Project Overview & Objectives
 
 *   **Goal:** Create a freely accessible, open-source web application (similar to the iOS-only `aVOR` app) that demonstrates how head movements trigger relative endolymph fluid movement, subsequent cupular deflection, neural firing rate asymmetries, and the resulting eye movements (nystagmus).
-*   **Asset Reuse:** Leverage the 3D inner ear and eye meshes from the existing `uoa-maud/bppv-simulator`.
+*   **Asset Reuse:** Leverage the 3D inner ear and eye meshes from the existing `jakalnz/bppv-simulator`.
 *   **Primary Input:** Live mobile/tablet device gyroscopes (`DeviceMotionEvent` and `DeviceOrientationEvent`).
 *   **Secondary Input:** Manual screen-drag interactions for desktop users.
 *   **Visual Output:** Dynamic color shifts in the semicircular canals reflecting excitation/inhibition, accompanied by real-time mathematical driving of the extraocular eye meshes.
@@ -219,6 +219,6 @@ class NystagmusEngine {
 When prompting **Claude Code** inside your repository to write this new application, execute the following implementation workflow:
 
 1.  **Isolate Engine Files:** Separate the core physiological state machines into a standalone file (e.g., `VorEngine.js`) so that it can be unit tested independently of Three.js.
-2.  **Asset Layer Decoupling:** Keep your loader configurations from `uoa-maud/bppv-simulator` intact but strip out particle simulation elements (`ParticleSystem`, gravimetric vectors, etc.). Replace them with the `VestibularInputManager` vectors.
+2.  **Asset Layer Decoupling:** Keep your loader configurations from `jakalnz/bppv-simulator` intact but strip out particle simulation elements (`ParticleSystem`, gravimetric vectors, etc.). Replace them with the `VestibularInputManager` vectors.
 3.  **Frame Loop Insertion:** Inside the standard `requestAnimationFrame` loop, inject the calculation pass: Read Gyro -> Project -> Filter Cupula -> Modify Firing Rates -> Update Mesh Colors -> Calculate Gaze Vector -> Apply Eye Rotation.
 4.  **UI Controls Toggle:** Add a dual-mode control panel to alternate between device mirroring (`deviceorientation`) and manual fallback interaction (e.g., mouse pointer velocity calculations).
