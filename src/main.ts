@@ -347,7 +347,7 @@ canalAboutPill.addEventListener('click', () => {
     canalAboutPopover.style.right = `${window.innerWidth - rect.right}px`;
     if (!aboutQrRendered) {
       aboutQrRendered = true;
-      QRCode.toCanvas(aboutQrCanvas, 'https://jakalnz.github.io/vor-simulator/', { width: 132, margin: 1 }).catch(
+      QRCode.toCanvas(aboutQrCanvas, 'https://uoa-maud.github.io/vor-simulator/', { width: 132, margin: 1 }).catch(
         () => {
           aboutQrRendered = false;
         }
